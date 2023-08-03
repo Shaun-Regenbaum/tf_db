@@ -15,7 +15,7 @@ if __name__ == '__main__':
    app.run()"""
 
 from flask import Flask, request, jsonify
-import TFApp.tf_code as tf_code
+import tf_code
 import supabase
 import json
 
