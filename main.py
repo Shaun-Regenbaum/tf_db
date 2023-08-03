@@ -172,6 +172,3 @@ def process_file():
     #         ),
     #         400,
     #     )
-
-
-uvicorn.run(app)
