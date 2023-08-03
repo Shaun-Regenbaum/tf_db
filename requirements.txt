@@ -2,5 +2,4 @@ supabase
 fastapi
 uvicorn
 python-dotenv
-collections
 pandas
