@@ -1,20 +1,5 @@
-"""from flask import Flask, request, jsonify
-import tf_code
-
-app = Flask(__name__)
-
-@app.route('/process_csv', methods=['POST'])
-def process_csv():
-    # Check if a file was uploaded
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file provided'}), 400
-
-    file = request.files['file']
-
-if __name__ == '__main__':
-   app.run()"""
-
 from fastapi import FastAPI
+import uvicorn
 import tf_code
 import supabase
 import json
@@ -188,3 +173,5 @@ def process_file():
     #         400,
     #     )
 
+
+uvicorn.run(app)
