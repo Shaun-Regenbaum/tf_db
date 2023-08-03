@@ -14,12 +14,12 @@ def process_csv():
 if __name__ == '__main__':
    app.run()"""
 
-from flask import Flask, request, jsonify
+from fastapi import FastAPI
 import tf_code
 import supabase
 import json
 
-app = Flask(__name__)
+app = FastAPI()
 
 
 def is_csv_file(file_path):
@@ -28,8 +28,11 @@ def is_csv_file(file_path):
     with open(file_path, "rb") as f:
         return f.read(len(csv_signature)) == csv_signature
 
+@app.get("/")
+def home():
+    return {'message': "hello!"}
 
-@app.route("/", methods=["GET"])
+@app.get("/gene")
 def process_file():
     gene_list_test = [
         "GRHL2",
@@ -158,7 +161,7 @@ def process_file():
 
     # file = request.files["file"]
 
-    return json.dumps(data)
+    return data
     # # Check if the file is of CSV or TSV format
     # if file and (is_csv_file(file.filename) or file.filename.endswith(".tsv")):
     #     # Save the uploaded file to a temporary location
@@ -185,6 +188,3 @@ def process_file():
     #         400,
     #     )
 
-
-if __name__ == "__main__":
-    app.run()

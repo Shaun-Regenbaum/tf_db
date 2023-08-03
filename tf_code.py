@@ -13,10 +13,14 @@ import pandas as pd
 import supabase
 from supabase import create_client, Client
 from collections import Counter
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # set up supabase connection
-url: str = "https://bpdedunlmwcjoahqkecp.supabase.co"
-key: str = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJwZGVkdW5sbXdjam9haHFrZWNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODkwNjgwNzQsImV4cCI6MjAwNDY0NDA3NH0.s2H1t7zEZe1zthLBbGcvf5Jh1WHgIPxpRYxyVuZeLFU"
+url: str = os.getenv("SUPABASE_URL")
+key: str  = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
 """# # Check if valid file type; if valid -> return file and call gene_output, else -> return None
